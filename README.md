@@ -31,4 +31,4 @@ After the five seconds the pedestrian Green LED will be off and both the pedestr
 
 
 ## System Design
-![Layered Architecture](Diagrams/Layered Architecture.png)
+![Layered Architecture](Diagrams/LayeredArchitecture.png)
