@@ -15,10 +15,10 @@ Crosswalk buttons let the signal operations know that someone is planning to cro
 
 ### 1.2. System Modes
 In our system there are two modes; normal mode and pedestrian mode.
-#### 1.2.1 Normal Mode
+#### 1.2.1. Normal Mode
 Cars' traffic lights will be changed every five seconds starting from Green then yellow then red then yellow then Green. The Yellow LED will blink for five seconds before moving to Green or Red LEDs.
 
-#### 1.2.2 Pedestrian Mode
+#### 1.2.2. Pedestrian Mode
 The system changes from normal mode to pedestrian mode when the pedestrian button is pressed.
 
 If pressed when the cars' Red LED is on, the pedestrian's Green LED and the cars' Red LEDs will be on for five seconds, this means that pedestrians can cross the street while the pedestrian's Green LED is on.
@@ -32,19 +32,26 @@ After the five seconds the pedestrian Green LED will be off and both the pedestr
 
 ## 2. System Design
 ![Layered Architecture](Diagrams/LayeredArchitecture.png)
-### 2.1. Button Driver
+### 2.1. Timer Driver
 #### 2.1.1 API Specification
 ##### 2.1.1.1 Type Definitions
 ##### 2.1.1.2 Function Definitions
-### 2.2. LED Driver
+### 2.2. DIO Driver
 #### 2.2.1 API Specification
 ##### 2.2.1.1 Type Definitions
 ##### 2.2.1.2 Function Definitions
-### 2.3. DIO drivers
+### 2.3. LED drivers
 #### 2.3.1 API Specification
 ##### 2.3.1.1 Type Definitions
 ##### 2.3.1.2 Function Definitions
-### 2.4. Timer driver
+### 2.4. Button driver
 #### 2.4.1 API Specification
 ##### 2.4.1.1 Type Definitions
 ##### 2.4.1.2 Function Definitions
+### 2.5. Application
+#### 2.5.1 API Specification
+##### 2.5.1.1 Function Definitions
+
+## 3. System Flow Chart
+![Layered Architecture](Diagrams/SystemFlowChart.png)
+## 4. System Constraints
