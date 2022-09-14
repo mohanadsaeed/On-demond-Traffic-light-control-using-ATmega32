@@ -56,7 +56,7 @@ ISR(INT2_vect){
 
 #ifdef INTERRUPT0
 /* Function to initialize interrupt registers*/
-void INT0_init(const Ei_ConfigType * Config_Ptr){
+void INT0_Init(const Ei_ConfigType * Config_Ptr){
 	/*Select when the interrupt occurs
 	 * Low level generates interrupt
 	 * Logical change generates interrupt
@@ -99,7 +99,7 @@ void INT0_deInit(void){
 
 
 #ifdef INTERRUPT1
-void INT1_init(const Ei_ConfigType * Config_Ptr){
+void INT1_Init(const Ei_ConfigType * Config_Ptr){
 	/*Select when the interrupt occurs
 	 * Low level generates interrupt
 	 * Logical change generates interrupt
@@ -139,7 +139,7 @@ void INT1_deInit(void){
 
 
 #ifdef INTERRUPT2
-void INT2_init(const Ei_ConfigType * Config_Ptr){
+void INT2_Init(const Ei_ConfigType * Config_Ptr){
 	/*Select when the interrupt occurs
 	 * Falling edge generates interrupt
 	 * Raising edge generates interrupt

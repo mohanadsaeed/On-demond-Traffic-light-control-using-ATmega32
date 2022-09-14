@@ -11,9 +11,10 @@
 #ifndef EXTERNAL_INTERRUPTS_H
 #define EXTERNAL_INTERRUPTS_H
 
-#include "std_types.h"
-#include "common_macros.h"
-#include "micro_config.h"
+#include "../../Utilities/std_types.h"
+#include "../../Utilities/common_macros.h"
+#include "../..//Utilities/micro_config.h"
+#include "external_interrupts_Cfg.h"
 
 /* -----------------------------------------------------------------------------
  *                         Types Declaration                                   *
@@ -56,7 +57,7 @@ typedef struct
 
 #ifdef INTERRUPT0
 /* Function to initialize interrupt registers*/
-void INT0_init(const Ei_ConfigType * Config_Ptr);
+void INT0_Init(const Ei_ConfigType * Config_Ptr);
 /* Function to change the event at which the interrupt will be triggered*/
 void INT0_setEvent(const Ei_InterruptEvent a_int0Event);
 /* Function to save the of the call back function in a global variable*/
@@ -66,14 +67,14 @@ void INT0_deInit(void);
 #endif
 
 #ifdef INTERRUPT1
-void INT1_init(const Ei_ConfigType * Config_Ptr);
+void INT1_Init(const Ei_ConfigType * Config_Ptr);
 void INT1_setEvent(const Ei_InterruptEvent a_int1Event);
 void INT1_setCallBack(void(*a_ptr)(void));
 void INT1_deInit(void);
 #endif
 
 #ifdef INTERRUPT2
-void INT2_init(const Ei_ConfigType * Config_Ptr);
+void INT2_Init(const Ei_ConfigType * Config_Ptr);
 void INT2_setEvent(const Ei_InterruptEvent a_int2Event);
 void INT2_setCallBack(void(*a_ptr)(void));
 void INT2_deInit(void);
