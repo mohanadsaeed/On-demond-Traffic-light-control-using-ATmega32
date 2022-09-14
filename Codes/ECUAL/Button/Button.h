@@ -10,9 +10,11 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
-#include "../Utilities/std_types.h"
-#include "../Utilities/micro_config.h"
-#include "../Utilities/common_macros.h"
+#include "../../Utilities/std_types.h"
+#include "../../Utilities/common_macros.h"
+#include "../..//Utilities/micro_config.h"
+#include "../../MCAL/DIO/Dio_Cfg.h"
+#include "../../MCAL/DIO/Dio.h"
 
 /*******************************************************************************
  *                              Module Macros                                  *
@@ -26,6 +28,6 @@
 void Button_Init(void);
 
 /*Button Read*/
-Dio_LevelType Button_Read(Dio_ChannelType button);
+uint8 Button_Read(uint8 buttonChannel);
 
 #endif

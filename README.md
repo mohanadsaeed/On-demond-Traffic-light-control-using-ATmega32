@@ -29,29 +29,5 @@ At the end of the two states, the cars' Red LED will be off and both Yellow LEDs
 
 After the five seconds the pedestrian Green LED will be off and both the pedestrian Red LED and the cars' Green LED will be on. Traffic lights signals are going to the normal mode again.
 
-
-## 2. System Design
-![Layered Architecture](Diagrams/LayeredArchitecture.png)
-### 2.1. Timer Driver
-#### 2.1.1 API Specification
-##### 2.1.1.1 Type Definitions
-##### 2.1.1.2 Function Definitions
-### 2.2. DIO Driver
-#### 2.2.1 API Specification
-##### 2.2.1.1 Type Definitions
-##### 2.2.1.2 Function Definitions
-### 2.3. LED drivers
-#### 2.3.1 API Specification
-##### 2.3.1.1 Type Definitions
-##### 2.3.1.2 Function Definitions
-### 2.4. Button driver
-#### 2.4.1 API Specification
-##### 2.4.1.1 Type Definitions
-##### 2.4.1.2 Function Definitions
-### 2.5. Application
-#### 2.5.1 API Specification
-##### 2.5.1.1 Function Definitions
-
-## 3. System Flow Chart
+## 2. System Flow Chart
 ![Layered Architecture](Diagrams/SystemFlowChart.png)
-## 4. System Constraints

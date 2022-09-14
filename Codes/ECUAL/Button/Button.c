@@ -8,7 +8,6 @@
 [DESCRIPTION]  :	Source File for Button Driver  
 ------------------------------------------------------------------------------------------*/
 #include "Button.h"
-#include "../DIO/Dio.h"
 
 /*Intialization*/
 void Button_Init(void){
