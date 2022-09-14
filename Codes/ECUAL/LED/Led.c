@@ -15,10 +15,16 @@ void Led_Init(void){
 	Dio_Init(&Dio_Configuration);
 };
 
-/*Led Write*/
-void Led_Write(Dio_ChannelType ledChannel,Dio_LevelType level){
-	Dio_WriteChannel(ledChannel, level);
+/*Led On*/
+void Led_On(Dio_ChannelType ledChannel){
+	Dio_WriteChannel(ledChannel,1);
 };
+
+/*Led Off*/
+void Led_Off(Dio_ChannelType ledChannel){
+	Dio_WriteChannel(ledChannel,0);
+};
+
 
 
 

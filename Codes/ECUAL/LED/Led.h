@@ -31,7 +31,10 @@
 /*Intialization*/
 void Led_Init(void);
 
-/*Led Write*/
-void Led_Write(Dio_ChannelType led,Dio_LevelType level);
+/*Led On*/
+void Led_On(Dio_ChannelType ledChannel);
+
+/*Led Off*/
+void Led_Off(Dio_ChannelType ledChannel){
 
 #endif
