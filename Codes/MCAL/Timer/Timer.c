@@ -1,5 +1,5 @@
 /* -----------------------------------------------------------------------------
-[FILE NAME]    :	timer1.c
+[FILE NAME]    :	timer.c
 
 [AUTHOR]       :	MOHANAD K. SAEED
 
@@ -48,7 +48,7 @@ ISR(TIMER1_COMPB_vect){
 /* -----------------------------------------------------------------------------
  *                      Functions Definitions                                  *
  ------------------------------------------------------------------------------*/
-void TIMER1_init(const Timer1_ConfigType * Config_Ptr){
+void Timer1_Init(const Timer1_ConfigType * Config_Ptr){
 	/*Initial value for timer 1*/
 	TCNT1 = Config_Ptr -> initialValue;
 	switch (Config_Ptr -> mode){
@@ -144,7 +144,7 @@ void TIMER1_init(const Timer1_ConfigType * Config_Ptr){
 	}
 }
 
-void TIMER1_setCallBack(void(*a_ptr)(void),const Timer1_ModeOfOperation mode){
+void Timer1_setCallBack(void(*a_ptr)(void),const Timer1_ModeOfOperation mode){
 	/* Save the address of the Call back function in a global variable */
 	switch (mode){
 	case TIMER1_OVF:
@@ -156,7 +156,7 @@ void TIMER1_setCallBack(void(*a_ptr)(void),const Timer1_ModeOfOperation mode){
 	}
 }
 
-void TIMER1_deInit(void){
+void Timer1_deInit(void){
 	TCCR1A=0;
 	TCCR1B=0;
 	/*Disable All Interrupts*/
@@ -164,17 +164,17 @@ void TIMER1_deInit(void){
 	CLEAR_BIT(TIMSK,OCIE1B);
 	CLEAR_BIT(TIMSK,TOIE1);}
 
-void TIMER1_startCount(const Timer1_Clock a_clock){
+void Timer1_startCount(const Timer1_Clock a_clock){
 	/*Initialize Clock*/
 	TCCR1B = (TCCR1B & NUM_TO_CLEAR_FIRST_3_BITS) |\
 			(a_clock & NUM_TO_CLEAR_LAST_5_BITS);
 }
 
-void TIMER1_stopCount(void){
+void Timer1_stopCount(void){
 	TCCR1B &= NUM_TO_CLEAR_FIRST_3_BITS;
 }
 
-void TIMER1_changeDutyCyle(uint16 duty,Timer1_channels channel){
+void Timer1_changeDutyCyle(uint16 duty,Timer1_channels channel){
 	switch (channel){
 	case OC1_A:
 		OCR1A = duty;
