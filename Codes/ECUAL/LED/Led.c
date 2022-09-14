@@ -8,7 +8,8 @@
 [DESCRIPTION]  :	Source File for Led Driver  
 ------------------------------------------------------------------------------------------*/
 #include "Led.h"
-#include "../DIO/Dio.h"
+#include "../../MCAL/DIO/Dio.h"
+#include <util/delay.h>
 
 /*Intialization*/
 void Led_Init(void){
@@ -25,6 +26,18 @@ void Led_Off(Dio_ChannelType ledChannel){
 	Dio_WriteChannel(ledChannel,0);
 };
 
+/*Led Blink*/
+void Led_Blink(Dio_ChannelType ledChannel){
+	Led_On(ledChannel);
+	_delay_ms(200);
+	Led_Off(ledChannel);
+	_delay_ms(200);
+}
+
+/*Led Get State*/
+Dio_LevelType Led_State(Dio_ChannelType ledChannel){
+	return Dio_ReadChannel(ledChannel);
+}
 
 
 

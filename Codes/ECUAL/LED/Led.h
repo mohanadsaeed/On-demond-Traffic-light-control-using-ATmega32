@@ -10,9 +10,11 @@
 #ifndef LED_H
 #define LED_H
 
-#include "../Utilities/std_types.h"
-#include "../Utilities/micro_config.h"
-#include "../Utilities/common_macros.h"
+#include "../../Utilities/std_types.h"
+#include "../../Utilities/common_macros.h"
+#include "../..//Utilities/micro_config.h"
+#include "../../MCAL/DIO/Dio.h"
+#include "../../MCAL/DIO/Dio_Cfg.h"
 
 /*******************************************************************************
  *                              Module Macros                                  *
@@ -35,6 +37,12 @@ void Led_Init(void);
 void Led_On(Dio_ChannelType ledChannel);
 
 /*Led Off*/
-void Led_Off(Dio_ChannelType ledChannel){
+void Led_Off(Dio_ChannelType ledChannel);
+
+/*Led Blink*/
+void Led_Blink(Dio_ChannelType ledChannel);
+
+/*Led Get State*/
+Dio_LevelType Led_State(Dio_ChannelType ledChannel);
 
 #endif
