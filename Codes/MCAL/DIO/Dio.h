@@ -11,9 +11,9 @@
 #ifndef DIO_H
 #define DIO_H
 
-#include "../Utilities/common_macros.h"
-#include "../Utilities/std_types.h"
-#include "../Utilities/micro_config.h"
+#include "../../Utilities/std_types.h"
+#include "../../Utilities/common_macros.h"
+#include "../..//Utilities/micro_config.h"
 /* Dio Pre-Compile Configuration Header file */
 #include "Dio_Cfg.h"
 

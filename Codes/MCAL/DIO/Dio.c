@@ -4,14 +4,13 @@
  *
  * File Name: Dio.c
  *
- * Description: Source file for TM4C123GH6PM Microcontroller - Dio Driver
+ * Description: Source file for ATmega32 Microcontroller - Dio Driver
  *
  * Author: Mohanad K. Saeed
  ******************************************************************************/
 #include "Dio.h"
-#include "Dio_Regs.h"
 
-static const Dio_ConfigChannel * Dio_PortChannels = NULL_PTR;
+static const Dio_ConfigChannel * Dio_PortChannels = (void *)0;
 
 /************************************************************************************
 * Service Name: Dio_Init
@@ -33,7 +32,7 @@ void Dio_Init(const Dio_ConfigType *ConfigPtr){
 			case DIO_PORTA: 
 				if(Dio_PortChannels[i].Pin_Direction==PIN_IN){
 					DDRA&=~(1<<Dio_PortChannels[i].Ch_Num);
-					if(Dio_PortChannels[i].Pin_PULL_UP==ENABLE_PULL_UP){
+					if(Dio_PortChannels[i].Pin_Pull_Up==ENABLE_PULL_UP){
 						PORTA|=(1<<Dio_PortChannels[i].Ch_Num);
 					}
 				}
@@ -44,7 +43,7 @@ void Dio_Init(const Dio_ConfigType *ConfigPtr){
 			case DIO_PORTB:   
 				if(Dio_PortChannels[i].Pin_Direction==PIN_IN){
 					DDRB&=~(1<<Dio_PortChannels[i].Ch_Num);
-					if(Dio_PortChannels[i].Pin_PULL_UP==ENABLE_PULL_UP){
+					if(Dio_PortChannels[i].Pin_Pull_Up==ENABLE_PULL_UP){
 						PORTB|=(1<<Dio_PortChannels[i].Ch_Num);
 					}
 				}
@@ -55,7 +54,7 @@ void Dio_Init(const Dio_ConfigType *ConfigPtr){
 			case DIO_PORTC:    
 				if(Dio_PortChannels[i].Pin_Direction==PIN_IN){
 					DDRC&=~(1<<Dio_PortChannels[i].Ch_Num);
-					if(Dio_PortChannels[i].Pin_PULL_UP==ENABLE_PULL_UP){
+					if(Dio_PortChannels[i].Pin_Pull_Up==ENABLE_PULL_UP){
 						PORTC|=(1<<Dio_PortChannels[i].Ch_Num);
 					}
 				}
@@ -66,7 +65,7 @@ void Dio_Init(const Dio_ConfigType *ConfigPtr){
 			case DIO_PORTD:    
 				if(Dio_PortChannels[i].Pin_Direction==PIN_IN){
 					DDRD&=~(1<<Dio_PortChannels[i].Ch_Num);
-					if(Dio_PortChannels[i].Pin_PULL_UP==ENABLE_PULL_UP){
+					if(Dio_PortChannels[i].Pin_Pull_Up==ENABLE_PULL_UP){
 						PORTD|=(1<<Dio_PortChannels[i].Ch_Num);
 					}
 				}
@@ -94,34 +93,34 @@ void Dio_WriteChannel(Dio_ChannelType ChannelId, Dio_LevelType Level){
 	{
 		case DIO_PORTA:
 			if(Level == 0){
-				PORTA&=~(Level>>Dio_PortChannels[ChannelId].Ch_Num);
+				PORTA&=~(1<<Dio_PortChannels[ChannelId].Ch_Num);
 			}
 			else{
-				PORTA|=(Level>>Dio_PortChannels[ChannelId].Ch_Num);
+				PORTA|=(1<<Dio_PortChannels[ChannelId].Ch_Num);
 			}
 			break;
 		case DIO_PORTB:   
 			if(Level == 0){
-				PORTB&=~(Level<<Dio_PortChannels[ChannelId].Ch_Num);
+				PORTB&=~(1<<Dio_PortChannels[ChannelId].Ch_Num);
 			}
 			else{
-				PORTB|=(Level<<Dio_PortChannels[ChannelId].Ch_Num);
+				PORTB|=(1<<Dio_PortChannels[ChannelId].Ch_Num);
 			}			
 			break;
 		case DIO_PORTC:    
 			if(Level == 0){
-				PORTC&=~(Level<<Dio_PortChannels[ChannelId].Ch_Num);
+				PORTC&=~(1<<Dio_PortChannels[ChannelId].Ch_Num);
 			}
 			else{
-				PORTC|=(Level<<Dio_PortChannels[ChannelId].Ch_Num);
+				PORTC|=(1<<Dio_PortChannels[ChannelId].Ch_Num);
 			}			
 			break;
 		case DIO_PORTD:    
 			if(Level == 0){
-				PORTD&=~(Level<<Dio_PortChannels[ChannelId].Ch_Num);
+				PORTD&=~(1<<Dio_PortChannels[ChannelId].Ch_Num);
 			}
 			else{
-				PORTD|=(Level<<Dio_PortChannels[ChannelId].Ch_Num);
+				PORTD|=(1<<Dio_PortChannels[ChannelId].Ch_Num);
 			}			
 			break;
 	}
@@ -142,15 +141,16 @@ Dio_LevelType Dio_ReadChannel(Dio_ChannelType ChannelId){
 	switch(Dio_PortChannels[ChannelId].Port_Num)
 	{
 		case DIO_PORTA:
-			level=(1<<Dio_PortChannels[ChannelId].Ch_Num)&PINA)>>Dio_PortChannels[ChannelId].Ch_Num;
+			level=((1<<Dio_PortChannels[ChannelId].Ch_Num)&PINA)>>Dio_PortChannels[ChannelId].Ch_Num;
+			break;
 		case DIO_PORTB: 
-			level=(1<<Dio_PortChannels[ChannelId].Ch_Num)&PINB)>>Dio_PortChannels[ChannelId].Ch_Num;		
+			level=((1<<Dio_PortChannels[ChannelId].Ch_Num)&PINB)>>Dio_PortChannels[ChannelId].Ch_Num;
 			break;
 		case DIO_PORTC: 
-			level=(1<<Dio_PortChannels[ChannelId].Ch_Num)&PINC)>>Dio_PortChannels[ChannelId].Ch_Num;		
+			level=((1<<Dio_PortChannels[ChannelId].Ch_Num)&PINC)>>Dio_PortChannels[ChannelId].Ch_Num;
 			break;
 		case DIO_PORTD: 
-			level=(1<<Dio_PortChannels[ChannelId].Ch_Num)&PIND)>>Dio_PortChannels[ChannelId].Ch_Num;		
+			level=((1<<Dio_PortChannels[ChannelId].Ch_Num)&PIND)>>Dio_PortChannels[ChannelId].Ch_Num;
 			break;
 	}
 	return level;
