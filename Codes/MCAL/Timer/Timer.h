@@ -10,9 +10,9 @@
 
 #ifndef TIMER1_H
 #define TIMER1_H
-#include "../../Utilities/std_types.h"
-#include "../../Utilities/common_macros.h"
-#include "../..//Utilities/micro_config.h"
+#include "../Utilities/std_types.h"
+#include "../Utilities/common_macros.h"
+#include "../Utilities/micro_config.h"
 #include "Timer_Cfg.h"
 
 /* -----------------------------------------------------------------------------
@@ -79,12 +79,12 @@ typedef struct
 /* -----------------------------------------------------------------------------
  *                      Functions Prototypes                                   *
   -----------------------------------------------------------------------------*/  
-void Timer1_Init(const Timer1_ConfigType * Config_Ptr);
-void Timer1_setCallBack(void(*a_ptr)(void),const Timer1_ModeOfOperation mode);
-void Timer1_deInit(void);
-void Timer1_startCount(const Timer1_Clock a_clock);
-void Timer1_stopCount(void);
-void Timer1_changeDutyCyle(uint16 duty,Timer1_channels channel);
+void TIMER1_init(const Timer1_ConfigType * Config_Ptr);
+void TIMER1_setCallBack(void(*a_ptr)(void),const Timer1_ModeOfOperation mode);
+void TIMER1_deInit(void);
+void TIMER1_startCount(const Timer1_Clock a_clock);
+void TIMER1_stopCount(void);
+void TIMER1_changeDutyCyle(uint16 duty,Timer1_channels channel);
 
 /* -----------------------------------------------------------------------------
  *                       External Variables                                    *
